@@ -7,10 +7,15 @@ var flipFlops = new CatalogItem("California work boots", 19.99);
 
 var group_shoes = new CatalogGroup("Shoes and Such", [boots, sneakers, flipFlops]);
 
-console.log( 'boots total: ', `$${boots.total}` );
-console.log( 'shoes total: ', `$${group_shoes.total}`);
+var group_food = new CatalogGroup("Food for while you try on clothes", [
+    new CatalogItem("Milkshake", 5.99),
+    new CatalogItem("French Fries", 3.99)
+]);
 
-boots.print();
-sneakers.print();
+var keychain = new CatalogItem("Key Chain", .99);
 
-group_shoes.print();
+var catalog = new CatalogGroup("Clothes and Food", [keychain, group_shoes, group_food]);
+
+console.log(`$${catalog.total}`);
+
+catalog.print();
