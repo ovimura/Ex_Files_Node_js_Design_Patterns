@@ -1,7 +1,9 @@
-var fs = require('fs');
 var path = require('path');
+var FS_Proxy = require('./FS_Proxy');
 
-var txtFile = path.join(__dirname, 'Readme.txt');
+var fs = new FS_Proxy(require('fs'));
+
+//var txtFile = path.join(__dirname, 'Readme.txt');
 var mdFile = path.join(__dirname, 'Readme.md');
 
 var result = (error, contents) => {
@@ -17,5 +19,5 @@ var result = (error, contents) => {
 
 }
 
-fs.readFile(txtFile, 'UTF-8', result);
+//fs.readFile(txtFile, 'UTF-8', result);
 fs.readFile(mdFile, 'UTF-8', result);
