@@ -1,4 +1,8 @@
+var conductor = require('./conductor');
+var { ExitCommand, CreateCommand } = require('./commands');
+
 var { createInterface }  = require('readline');
+
 var rl = createInterface({
     input: process.stdin,
     output: process.stdout
@@ -16,12 +20,11 @@ rl.on('line', input => {
     switch(commandText) {
 
         case "exit":
-            console.log('TODO: Exit');
+            conductor.run(new ExitCommand());
             break;
 
         case "create" :
-            console.log(`TODO: Create File ${fileName}`);
-            console.log('file contents:', text);
+            conductor.run(new CreateCommand(fileName, text));
             break;
 
         default :
