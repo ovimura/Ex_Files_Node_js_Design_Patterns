@@ -7,7 +7,7 @@ var rl = createInterface({
     output: process.stdout
 });
 
-console.log('create <fileName> <text> | exit');
+console.log('create <fileName> <text> | history | undo | redo | exit');
 rl.prompt();
 
 rl.on('line', input => {
@@ -18,6 +18,15 @@ rl.on('line', input => {
 
     switch(commandText) {
 
+        case "history":
+            conductor.printHistory();
+            break;
+        case "undo":
+            conductor.undo();
+            break;
+        case "redo":
+            conductor.redo();
+            break;
         case "exit":
             conductor.run(new ExitCommand());
             break;
